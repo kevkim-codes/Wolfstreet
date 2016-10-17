@@ -13,6 +13,17 @@ angular.module('wolfstreet.services', [])
       });
   };
 
+  var usaGraph = function() {
+    return $http({
+        method: 'GET',
+        url: 'http://dev.markitondemand.com/Api/v2/InteractiveChart',
+        config: 'application/json'
+      })
+      .then(function(response) {
+        return response.data;
+      });
+  };
+
   // var getAll = function() {
   //   return $http({
   //       method: 'GET',
@@ -34,6 +45,7 @@ angular.module('wolfstreet.services', [])
   return {
     lookUp: lookUp,
     addOne: addOne,
+    usaGraph: usaGraph
     // getAll: getAll
   };
 });

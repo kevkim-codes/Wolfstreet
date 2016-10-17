@@ -2,7 +2,8 @@ angular.module('wolfstreet', [
     'wolfstreet.services',
     'wolfstreet.dashboard',
     'wolfstreet.stocks',
-    'ngRoute'
+    'ngRoute',
+    'highcharts-ng'
   ])
   .config(function($routeProvider, $httpProvider) {
     $routeProvider
@@ -12,7 +13,7 @@ angular.module('wolfstreet', [
       })
       .when('/stocks', {
         templateUrl: 'stocks/stocks.html',
-        controller: 'ShortenController',
+        controller: 'StocksController',
       })
       .otherwise({
         redirectTo: '/dashboard'
