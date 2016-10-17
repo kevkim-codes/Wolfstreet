@@ -13,20 +13,27 @@
 </div>
 
 <!-- Dashboard -->
-
 <div ng-controller="dashboardController">
-  <input type="text" ng-model="filter" />
+  <input type="text" ng-model="filter"/>
   <div>
-    <h2> U.S. Stocks </h2>
-    <div>{{initialMarket}}</div>
-    <div ng-controller ="highchartsController" id="container" style="width:100%; height:400px;">
-      <highchart id="chart" config="chart"></highchart>
-    </div>
+  {{stocks}}
   </div>
+  <button ng-click=promiseData('aapl')> Submit </button>
 </div>
 
-<!-- Testing -->
+<!-- High Charts USA Graph -->
+<div ng-controller="highchartsController" id="container" style="width:100%; height:400px;">
+  <h2> U.S. Stocks </h2>
+  <div>{{initialMarket}}</div>
+  <highchart id="usChart" config="chartConfig" class="span10"></highchart>
+
+</div>
+
+  <!-- Testing -->
 <hr>
 <pre>
-{{stock}}
+{{stocks}}
 </pre>
+
+
+
