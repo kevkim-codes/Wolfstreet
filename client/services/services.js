@@ -7,7 +7,22 @@ angular.module('wolfstreet.services', [])
 
       $http({
           method: 'GET',
-          url: 'https://www.google.com/finance/info?q=' + symbol,
+          url: 'http://dev.markitondemand.com/MODApis/Api/v2/Quote?symbol=' + symbol
+        })
+        .success(function(response) {
+          deferred.resolve(response);
+        });
+      return deferred.promise;
+    },
+    searchData: [],
+
+    getStocks: function() {
+      var deferred = $q.defer();
+
+      $http({
+          method: 'GET',
+          // url: '../stocks.json'
+          url: '/api/stocks'
         })
         .success(function(response) {
           deferred.resolve(response);
@@ -15,38 +30,24 @@ angular.module('wolfstreet.services', [])
       return deferred.promise;
     },
 
-    usaGraph: function() {
+    addStock: function(stock) {
       return $http({
-          method: 'GET',
-          symbol: 'goog',
-          url: 'http://dev.markitondemand.com/Api/v2/InteractiveChart/json',
-        })
-        .then(function(response) {
-          return response.data;
-        });
-    },
+        method: 'POST',
+        url: '../stocks.json',
+        data: stock
+      });
+    }
 
-    getStocks: function() {
-      var deferred = $q.defer();
-
-      $http({
-          method: 'GET',
-          url: '../stocks.json'
-        })
-        .success(function(response) {
-          deferred.resolve(response);
-        });
-        return deferred.promise;
-    },
-
-    // addStock: function(stock) {
+    // usaGraph: function() {
     //   return $http({
-    //     method: 'POST',
-    //     url: '../stocks.json',
-    //     data: stock
-    //   });
-    // }
-
+    //       method: 'GET',
+    //       symbol: 'goog',
+    //       url: 'http://dev.markitondemand.com/Api/interactive?parameters={"Normalized":false,"StartDate":"2013-07-15T00:00:00-00","EndOffsetDays":100,"NumberOfDays":100,"DataPeriod":"Day","DataInterval":0,"LabelPeriod":"Day","LabelInterval":1,"ExtraPoints":0,"Elements":[{"Symbol":"AAPL","ElementType":"price","Params":["ohlc"]}],"RealTime":false}',
+    //     })
+    //     .then(function(response) {
+    //       return response.data;
+    //     });
+    // },
 
     //end of object
   }

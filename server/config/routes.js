@@ -1,13 +1,17 @@
 var stockController = require('../stocks/stockController.js');
 var helpers = require('./helpers.js');
+var path = require ('path');
 
 module.exports = function (app, express) {
 
-  app.get('/stocks.json', stockController.allStocks);
-  app.post('/stocks.json', stockController.newStock);
+  app.get('/', function (req,res) {
+    res.sendFile(path.resolve(__dirname + '/../../client/index.html'));
+  });
 
-  // If a request is sent somewhere other than the routes above,
-  // send it through our custom error handler
+  // app.get('/api/stocks', stockController.allStocks);
+  // app.post('/stocks.json', stockController.newStock);
+
+//error handlers
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 };

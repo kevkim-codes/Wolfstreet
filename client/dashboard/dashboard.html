@@ -1,38 +1,50 @@
 <!-- Navbar -->
 <div id='container'>
-  <nav class="navigation">
-    <ul>
-      <li>
-        <a class="selected" href="#/dashboard">Dashboard</a>
-      </li>
-      <li>
-        <a href="#/stocks">Stocks</a>
-      </li>
-    </ul>
-  </nav>
-</div>
-<!-- Dashboard -->
-<div ng-controller="dashboardController">
-  <h2>Search Filter</h2>
-  <input type="text" ng-model="search"/>
   <div>
-<!--   {{data}}
- -->    <div>
-      <div class="stocks" ng-repeat="stock in data | filter:search">
-      <h3> {{stock.Name}} </h3>
-      <div> Symbol: {{stock.Symbol}} </div>
-      <div> Last Price: {{stock.LastPrice}} </div>
-      <div> High: {{stock.High}} </div>
-      <div> Low: {{stock.Low}} </div>
-      <br>
+    <nav class="navigation">
+      <ul>
+        <li>
+          <a class="selected" href="#/dashboard">Dashboard</a>
+        </li>
+        <li>
+          <a href="#/stocks">Stocks</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Dashboard -->
+  <div ng-controller="dashboardController" class="container">
+    <h2>Search Filter</h2>
+    <div >
+      <input class="filter" type="text" ng-model="search" placeholder="Search.."/>
+    </div>
+    <div>
+      <div>
+        <div class="stocks" ng-repeat="stock in data | filter:search">
+          <h3> {{stock.Name}} </h3>
+          <div> Symbol: {{stock.Symbol}} </div>
+          <div> Last Price: {{stock.LastPrice}} </div>
+          <div> High: {{stock.High}} </div>
+          <div> Low: {{stock.Low}} </div>
+          <br>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- High Charts USA Graph -->
-
-<div ng-controller="highchartsController" class="usa" style="width:100%; height:400px;">
-  <h2> U.S. Stocks </h2>
-  <div>{{initialMarket}}</div>
-  <highchart id="usChart" config="chartConfig" class="span10"></highchart>
+  <!-- High Charts USA Graph -->
+  <div ng-controller="highchartsController" class="container">
+    <h2 id="dashboard"> Personal Dashboard </h2>
+    <div class="graphs">
+      <highchart config="chartConfig"></highchart>
+    </div>
+    <div class="graphs">
+      <highchart config="usdChartConfig"></highchart>
+    </div>
+    <div class="graphs">
+      <highchart config="pieChartConfig"></highchart>
+    </div>
+    <div class="graphs">
+      <highchart config="areaConfig"></highchart>
+    </div>
+  </div>
 </div>

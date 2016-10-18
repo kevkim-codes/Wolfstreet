@@ -1,19 +1,14 @@
 angular.module('wolfstreet.stocks', [])
 
-.controller('StocksController', function ($scope, $location, Stocks) {
-  // $scope.adder = Stocks.addStock($scope.search);
+.controller('StocksController', function($scope, Stocks) {
+  $scope.searchData = Stocks.searchData;
 
-  // $scope.link = {};
-  // $scope.addLink = function() {
-  //   $scope.loading = true;
-  //   Links.addOne($scope.link)
-  //     .then(function() {
-  //       $scope.loading = false;
-  //       $location.path('/');
-  //     })
-  //     .catch(function(error) {
-  //       console.log(error);
-  //     });
-  // };
-
-  });
+  $scope.adder = function() {
+    Stocks.lookUp($scope.search).then(function(data) {
+      // Stocks.addStock(angular.toJson(data));
+      Stocks.searchData.push(data);
+      // $scope.searchData = Stocks.searchData;
+    })
+    $scope.search = '';
+  };
+});

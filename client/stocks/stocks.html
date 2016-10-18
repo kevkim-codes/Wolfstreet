@@ -11,11 +11,13 @@
     </ul>
   </nav>
 </div>
-
 <!-- Stock Adder -->
-<div ng-controller='stocksController'>
-  <input type='text' ng-model='search'/>
-  <button ng-click='adder'> Submit </button>
+<div ng-controller='StocksController'>
+  <div class="searcher">
+    <input type='text' ng-model='search' placeholder="Search for a Stock">
+    <button type ='submit' ng-click='adder()'> Submit </button>
+  </div>
   <div>
+  {{searchData}}
   </div>
 </div>
