@@ -17,13 +17,7 @@ h1 {
 }
 
 .searcher {
-  position: absolute;
-  width: 300px;
-  height: 200px;
-  z-index: 15;
-  top: 50%;
-  left: 50%;
-  margin: -100px 0 0 -150px;
+  position: relative;
 }
 
 .filter {
@@ -32,9 +26,7 @@ h1 {
   transition: width 0.4s ease-in-out;
 }
 
-
 /* When the input field gets focus, change its width to 100% */
-
 .filter:focus {
   border-color: #66afe9;
   outline: 0;

@@ -7,7 +7,7 @@ angular.module('wolfstreet.services', [])
 
       $http({
           method: 'GET',
-          url: 'http://dev.markitondemand.com/MODApis/Api/v2/Quote?symbol=' + symbol
+          url: 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/json/?symbol=' + symbol
         })
         .success(function(response) {
           deferred.resolve(response);
@@ -18,10 +18,8 @@ angular.module('wolfstreet.services', [])
 
     getStocks: function() {
       var deferred = $q.defer();
-
       $http({
           method: 'GET',
-          // url: '../stocks.json'
           url: '/api/stocks'
         })
         .success(function(response) {
@@ -31,10 +29,11 @@ angular.module('wolfstreet.services', [])
     },
 
     addStock: function(stock) {
+      // console.log(stock);
       return $http({
         method: 'POST',
-        url: '../stocks.json',
-        data: stock
+        url: '/api/stocks',
+        body: stock
       });
     }
 

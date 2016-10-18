@@ -1,14 +1,14 @@
 angular.module('wolfstreet.stocks', [])
 
 .controller('StocksController', function($scope, Stocks) {
-  $scope.searchData = Stocks.searchData;
+  $scope.searchData = [];
 
-  $scope.adder = function() {
-    Stocks.lookUp($scope.search).then(function(data) {
-      // Stocks.addStock(angular.toJson(data));
-      Stocks.searchData.push(data);
-      // $scope.searchData = Stocks.searchData;
+  $scope.searcher = function() {
+    Stocks.lookUp($scope.searchText).then(function(data) {
+      Stocks.addStock(angular.toJson(data));
+      $scope.searchData.push(data);
     })
+    $scope.searchData = angular.fromJson($scope.searchData);
     $scope.search = '';
   };
 });
