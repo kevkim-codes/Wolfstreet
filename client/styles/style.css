@@ -1,24 +1,48 @@
 body {
   margin: 0;
   margin-top: 10px;
-  font-family: arial, sans-serif;
 }
 
 a {
   color: #333;
-  font-size: 14px;
+  font-size: 18px;
+  padding: 15px;
   text-decoration: none;
 }
 
 h1 {
-  font-style: italic;
   margin-bottom: 10px;
+}
+
+.usa {
+  margin-top: 30px;
+  float: right;
+}
+
+.stocks {
+  float: left;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  opacity: 0.5;
+  border: 10px;
+  border-color: black;
+  background-color: grey;
+}
+
+.logo {
+  height: 125px;
+  width: 125px;
 }
 
 .navigation {
   width: 100%;
   height: 40px;
-  background-color: #eee;
+  background-color: grey;
+  border-width: 5px;
+  border-color: black;
 }
 
 .navigation ul {
@@ -29,6 +53,7 @@ h1 {
 
 .navigation li {
   float: left;
+  margin-left: 10px;
 }
 
 .navigation li a {
@@ -41,14 +66,9 @@ h1 {
 }
 
 .navigation li a:hover {
-  background-color: #ddd;
+  background-color: darkgrey;
 }
 
 .navigation li a.selected {
-  background-color: #ccc;
-}
-
-#container {
-  clear: both;
-  margin-top: 10px;
+  background-color: dark;
 }

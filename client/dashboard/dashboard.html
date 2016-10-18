@@ -11,29 +11,28 @@
     </ul>
   </nav>
 </div>
-
 <!-- Dashboard -->
 <div ng-controller="dashboardController">
-  <input type="text" ng-model="filter"/>
+  <h2>Search Filter</h2>
+  <input type="text" ng-model="search"/>
   <div>
-  {{stocks}}
+<!--   {{data}}
+ -->    <div>
+      <div class="stocks" ng-repeat="stock in data | filter:search">
+      <h3> {{stock.Name}} </h3>
+      <div> Symbol: {{stock.Symbol}} </div>
+      <div> Last Price: {{stock.LastPrice}} </div>
+      <div> High: {{stock.High}} </div>
+      <div> Low: {{stock.Low}} </div>
+      <br>
+      </div>
+    </div>
   </div>
-  <button ng-click=promiseData('aapl')> Submit </button>
 </div>
-
 <!-- High Charts USA Graph -->
-<div ng-controller="highchartsController" id="container" style="width:100%; height:400px;">
+
+<div ng-controller="highchartsController" class="usa" style="width:100%; height:400px;">
   <h2> U.S. Stocks </h2>
   <div>{{initialMarket}}</div>
   <highchart id="usChart" config="chartConfig" class="span10"></highchart>
-
 </div>
-
-  <!-- Testing -->
-<hr>
-<pre>
-{{stocks}}
-</pre>
-
-
-

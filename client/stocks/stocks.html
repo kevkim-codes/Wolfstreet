@@ -13,11 +13,9 @@
 </div>
 
 <!-- Stock Adder -->
-<input type='text' ng-model='search'/>
-<button ng-click=addStock()> Submit </button>
-
-<div>
-
-</div>
-
+<div ng-controller='stocksController'>
+  <input type='text' ng-model='search'/>
+  <button ng-click='adder'> Submit </button>
+  <div>
+  </div>
 </div>

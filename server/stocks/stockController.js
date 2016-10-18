@@ -1,78 +1,45 @@
-// var Q = require('q');
-// var util = require('../config/utils.js');
-// var Link = require('./linkModel.js');
+var Q = require('q');
+var Stock = require('./stockModel.js');
 
-// // Promisify a few mongoose methods with the `q` promise library
-// var findLink = Q.nbind(Link.findOne, Link);
-// var createLink = Q.nbind(Link.create, Link);
-// var findAllLinks = Q.nbind(Link.find, Link);
+// Promisify a few mongoose methods with the `q` promise library
+var findStock = Q.nbind(Stock.findOne, Stock);
+var createStock = Q.nbind(Stock.create, Stock);
+var findAllStocks = Q.nbind(Stock.find, Stock);
 
-// module.exports = {
+module.exports = {
 
-//   allLinks: function (req, res, next) {
-//     findAllLinks({})
-//       .then(function (links) {
-//         res.json(links);
-//       })
-//       .fail(function (error) {
-//         next(error);
-//       });
-//   },
+  allStocks: function (req, res, next) {
+    findAllStocks({})
+      .then(function (stocks) {
+        res.json(stocks);
+      })
+      .fail(function (error) {
+        next(error);
+      });
+  },
 
-//   newLink: function (req, res, next) {
-//     var url = req.body.url;
-//     if (!util.isValidUrl(url)) {
-//       return next(new Error('Not a valid url'));
-//     }
+  newStock: function (req, res, next) {
+//todo - come up with way to validate it is a correct stock symbol
 
-//     findLink({url: url})
-//       .then(function (match) {
-//         if (match) {
-//           res.send(match);
-//         } else {
-//           return util.getUrlTitle(url);
-//         }
-//       })
-//       .then(function (title) {
-//         if (title) {
-//           var newLink = {
-//             url: url,
-//             visits: 0,
-//             baseUrl: req.headers.origin,
-//             title: title
-//           };
-//           return createLink(newLink);
-//         }
-//       })
-//       .then(function (createdLink) {
-//         if (createdLink) {
-//           res.json(createdLink);
-//         }
-//       })
-//       .fail(function (error) {
-//         next(error);
-//       });
-//   },
-
-//   navToLink: function (req, res, next) {
-//     findLink({code: req.params.code})
-//       .then(function (link) {
-//         if (!link) {
-//           return next(new Error('Link not added yet'));
-//         }
-
-//         link.visits++;
-//         link.save(function (err, savedLink) {
-//           if (err) {
-//             next(err);
-//           } else {
-//             res.redirect(savedLink.url);
-//           }
-//         });
-//       })
-//       .fail(function (error) {
-//         next(error);
-//       });
-//   }
-
-// };
+    findStock({symbol: symbol})
+      .then(function (match) {
+        if (match) {
+          res.send(match);
+        } else {
+          //put in a get request then add to DB
+          var newStock = {
+          //todo create a way to make new stocks through get requests
+          };
+          return createStock(newStock);
+        }
+      })
+      .then(function (createdStock) {
+        if (createdStock) {
+          res.json(createdStock);
+        }
+      })
+      .fail(function (error) {
+        next(error);
+      });
+  }
+};
