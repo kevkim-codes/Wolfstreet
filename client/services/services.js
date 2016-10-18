@@ -33,7 +33,9 @@ angular.module('wolfstreet.services', [])
       return $http({
         method: 'POST',
         url: '/api/stocks',
-        body: stock
+        data: stock
+      }).success(function(response){
+        console.log(response);
       });
     }
 

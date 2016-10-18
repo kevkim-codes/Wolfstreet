@@ -2,7 +2,8 @@ body {
   margin: 0;
   margin-top: 10px;
   text-shadow: 10px;
-  text-color: #DDDDDD;
+  color: #E3F2FD;
+  background-color: #616161;
 }
 
 a {
@@ -14,13 +15,25 @@ a {
 
 h1 {
   margin-bottom: 10px;
+  color: #E3F2FD;
+}
+
+.chart-bubble {
+  background-color: #efefef;
+  opacity: 0.8;
+}
+
+.ng-scope {
+  background-color: #616161;
 }
 
 .searcher {
-  position: relative;
+  clear: both;
+  width: 30%;
 }
 
 .filter {
+  clear: both;
   width: 130px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
@@ -36,7 +49,6 @@ h1 {
 }
 
 #dashboard {
-  float: center;
   padding: 20px;
   top-margin: 30px;
   text-align: center;
@@ -47,10 +59,15 @@ h1 {
   clear: both;
 }
 
+.dashboardContainer {
+  box-shadow: 20px 20px 20px #888888;
+  position: relative;
+  clear: both;
+}
+
 .graphs {
   float: left;
   width: 50%;
-  background-color: clear;
   opacity: 0.8;
 }
 
@@ -60,9 +77,6 @@ h1 {
   stroke-width: 2px;
 }
 
-.filter {
-  margin: 15px;
-}
 
 .search {
   margin: 30px;
@@ -70,15 +84,24 @@ h1 {
 
 .stocks {
   float: left;
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 180px;
   text-align: center;
   padding: 15px;
   margin: 10px;
   opacity: 0.5;
-  border: 10px;
-  border-color: black;
-  background-color: grey;
+  background-color: #00838F;
+}
+
+.stocks-dashboard {
+  float: left;
+  height: 230px;
+  width: 200px;
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  opacity: 0.5;
+  background-color: #607D8B;
 }
 
 .logo {
@@ -89,9 +112,8 @@ h1 {
 .navigation {
   width: 100%;
   height: 40px;
-  background-color: grey;
-  border-width: 5px;
-  border-color: black;
+  background-color: #E8EAF6;
+  font-weight: bold;
 }
 
 .navigation ul {
@@ -115,9 +137,18 @@ h1 {
 }
 
 .navigation li a:hover {
-  background-color: darkgrey;
+  background-color: #B2DFDB;
 }
 
-.navigation li a.selected {
-  background-color: dark;
+.navigation ul li:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+
+}
+
+.navigation ul li:last-child {
+
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+
 }

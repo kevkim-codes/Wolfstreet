@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <div id='container'>
   <div>
-    <nav class="navigation">
+    <nav layout="row" class="navigation">
       <ul>
         <li>
           <a class="selected" href="#/dashboard">Dashboard</a>
@@ -13,38 +13,44 @@
     </nav>
   </div>
   <!-- Dashboard -->
-  <div ng-controller="dashboardController" class="container">
+  <div layout="column" ng-controller="dashboardController" class="container">
     <h2>Search Filter</h2>
-    <div >
-      <input class="filter" type="text" ng-model="search" placeholder="Search.."/>
-    </div>
     <div>
-      <div>
-        <div class="stocks" ng-repeat="stock in data | filter:search">
-          <h3> {{stock.Name}} </h3>
-          <div> Symbol: {{stock.Symbol}} </div>
-          <div> Last Price: {{stock.LastPrice}} </div>
-          <div> High: {{stock.High}} </div>
-          <div> Low: {{stock.Low}} </div>
-          <br>
+      <input class="filter" type="text" ng-model="search" placeholder="Search.." />
+    </div>
+    <br>
+    <div>
+      <div layout="row">
+        <div layout="column" class="stocks-dashboard" ng-repeat="stock in data | filter:search">
+          <h3> {{stock.name}} </h3>
+          <div> Symbol: {{stock.symbol}} </div>
+          <div> Last Price: {{stock.last_price}} </div>
+          <div> Market Cap: {{stock.market_cap}} </div>
+          <div> High: {{stock.high}} </div>
+          <div> Low: {{stock.low}} </div>
+          <div> Volume: {{stock.volume}} </div>
         </div>
       </div>
     </div>
   </div>
   <!-- High Charts USA Graph -->
-  <div ng-controller="highchartsController" class="container">
-    <h2 id="dashboard"> Personal Dashboard </h2>
-    <div class="graphs">
-      <highchart config="chartConfig"></highchart>
+  <div ng-controller="highchartsController" class="dashboardContainer">
+    <h2 layout="row" id="dashboard"> Personal Dashboard </h2>
+    <div layout="row">
+      <div layout="column" class="graphs">
+        <highchart config="chartConfig"></highchart>
+      </div>
+      <div layout="column" class="graphs">
+        <highchart config="usdChartConfig"></highchart>
+      </div>
     </div>
-    <div class="graphs">
-      <highchart config="usdChartConfig"></highchart>
-    </div>
-    <div class="graphs">
-      <highchart config="pieChartConfig"></highchart>
-    </div>
-    <div class="graphs">
-      <highchart config="areaConfig"></highchart>
+    <div layout="row">
+      <div layout="column" class="graphs">
+        <highchart config="pieChartConfig"></highchart>
+      </div>
+      <div layout="column" class="graphs">
+        <highchart config="areaConfig"></highchart>
+      </div>
     </div>
   </div>
 </div>

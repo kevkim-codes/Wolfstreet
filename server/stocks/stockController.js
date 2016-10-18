@@ -9,6 +9,7 @@ module.exports = {
   allStocks: function(req, res, next) {
     findAllStocks({})
       .then(function(stocks) {
+        console.log(stocks);
         res.json(stocks);
       })
       .fail(function(error) {
@@ -18,14 +19,15 @@ module.exports = {
 
   newStock: function(req, res, next) {
     //todo - come up with way to validate it is a correct stock symbol
-    var symbol = req.body.symbol;
     var stock = req.body;
-    findStock({ symbol: symbol })
+    console.log('stock', stock);
+    findStock({ Symbol: stock.Symbol })
       .then(function(match) {
         if (match) {
           res.send(match);
+          console.log('MATCH MATCH', match)
         } else {
-          var newStock = {
+          var newStock = new Stock({
             name: stock.Name,
             symbol: stock.Symbol,
             last_price: stock.LastPrice,
@@ -38,18 +40,16 @@ module.exports = {
             change_percent_ytd: stock.PercentYTD,
             high: stock.High,
             low: stock.Low,
-            open: Stock.Open,
-          };
-          return createStock(newStock);
+            open: stock.Open,
+          });
+          newStock.save(function(err) {
+            if (err) {
+              return next(err);
+            }
+            res.send(newStock);
+          });
         }
       })
-      .then(function(createdStock) {
-        if (createdStock) {
-          res.json(createdStock);
-        }
-      }).fail(function(error) {
-        next(error);
-      });
   }
 
   //end of exports

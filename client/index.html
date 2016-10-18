@@ -9,8 +9,10 @@
 </head>
 
 <body>
-  <img class="logo" ng-src="assets/wolfy.svg">
-  <h1>Wolf Street</h1>
+  <div layout="row">
+    <img class="logo" ng-src="assets/wolfy.svg">
+    <h1>Wolfstreet</h1>
+  </div>
   <div ng-view></div>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
@@ -24,6 +26,8 @@
   <script src="bower_components/highcharts/highcharts.js"></script>
   <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
   <script src="bower_components/highcharts/modules/exporting.js"></script>
+  <script src="bower_components/chart.js/dist/Chart.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
 </body>
 
 </html>

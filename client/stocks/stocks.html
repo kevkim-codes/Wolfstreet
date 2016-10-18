@@ -1,6 +1,6 @@
 <!-- Nav Bar -->
 <div id='container'>
-  <nav class="navigation">
+  <nav layout="row" class="navigation">
     <ul>
       <li>
         <a href="#/dashboard">Dashboard</a>
@@ -13,24 +13,31 @@
 </div>
 <!-- Stock Adder -->
 <div ng-controller='StocksController'>
-
-  <div class="searcher">
+  <div layout="column" class="searcher">
     <h2>Stock Adder</h2>
     <input type='text' ng-model='searchText' placeholder="Search for a Stock">
     <button type='submit' ng-click='searcher()'> Submit </button>
   </div>
-
+  <br>
+  <br>
   <div>
-    <input class="filter" type="text" ng-model="search" placeholder="Search.." />
+    <input class="filter" type="text" ng-model="search" placeholder="Filter.." />
   </div>
-
-  <div class="stocks" ng-repeat="stock in searchData | filter:search">
-    <h3> {{stock.Name}} </h3>
-    <div> Symbol: {{stock.Symbol}} </div>
-    <div> Last Price: {{stock.LastPrice}} </div>
-    <div> High: {{stock.High}} </div>
-    <div> Low: {{stock.Low}} </div>
-    <br>
+  <div layout="row">
+    <div layout="column" class="stocks" ng-repeat="stock in searchData | filter:search">
+      <h3> {{stock.Name}} </h3>
+      <div> Symbol: {{stock.Symbol}} </div>
+      <div> Last Price: {{stock.LastPrice}} </div>
+      <div> High: {{stock.High}} </div>
+      <div> Low: {{stock.Low}} </div>
+      <br>
+    </div>
   </div>
-
+  <!-- Dynamic Bubble Chart -->
+  <br>
+  <h2> Dynamic Volatility Stock Portfolio </h2>
+  <div layout="row">
+    <canvas id="base" class="chart-bubble" chart-data="data" chart-series="series">
+    </canvas>
+  </div>
 </div>

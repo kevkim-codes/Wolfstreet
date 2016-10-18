@@ -16,4 +16,5 @@ var StockSchema = new mongoose.Schema({
   open: Number
 });
 
+
 module.exports = mongoose.model('Stock', StockSchema);

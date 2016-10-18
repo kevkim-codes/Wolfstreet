@@ -3,7 +3,8 @@ angular.module('wolfstreet.dashboard', [])
   .controller('dashboardController', function($scope, Stocks) {
     $scope.data = {};
     Stocks.getStocks().then(function(stocks) {
-      console.log(stocks);
+      console.log('STOCK GET DATA', stocks)
+
       $scope.data = angular.fromJson(stocks);
     });
   })
@@ -131,6 +132,5 @@ angular.module('wolfstreet.dashboard', [])
       }
     }
   };
-
   //end of object
 })

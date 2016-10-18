@@ -4,21 +4,20 @@ angular.module('wolfstreet', [
     'wolfstreet.stocks',
     'ngRoute',
     'highcharts-ng',
-    'ngMaterial'
+    'ngMaterial',
+    'chart.js'
   ])
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-      .dark();
+      .primaryPalette('indigo');
   })
   .config(function($routeProvider, $httpProvider) {
     $routeProvider
       .when('/dashboard', {
         templateUrl: 'dashboard/dashboard.html',
-        // controller: 'DashboardController',
       })
       .when('/stocks', {
         templateUrl: 'stocks/stocks.html',
-        // controller: 'StocksController',
       })
       .otherwise({
         redirectTo: '/dashboard'
