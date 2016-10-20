@@ -2,7 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var app = express();
 
-mongoose.connect('mongodb://localhost/wolfstreet');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/wolfstreet');
 
 require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
