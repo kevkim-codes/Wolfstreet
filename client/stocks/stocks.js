@@ -19,7 +19,6 @@ angular.module('wolfstreet.stocks', [])
         console.log(bubble);
         $scope.data.push(arr);
       })
-      // $scope.searchData = angular.fromJson($scope.searchData);
     $scope.searchText = '';
   };
   //end of object

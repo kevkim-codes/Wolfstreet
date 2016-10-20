@@ -13,11 +13,11 @@
 </div>
 <!-- Stock Adder -->
 <div ng-controller='StocksController'>
-  <div layout="column" class="searcher">
+  <form ng-submit="searcher()" layout="column" class="searcher">
     <h2>Stock Adder</h2>
-    <input type='text' ng-model='searchText' placeholder="Search for a Stock">
-    <button type='submit' ng-click='searcher()'> Submit </button>
-  </div>
+    <input type='text' ng-model='searchText' placeholder="Search for a Stock" ng-submit='searcher()'>
+    <button type='submit' > Submit </button>
+  </form>
   <br>
   <br>
   <div>
