@@ -2,10 +2,8 @@
 *Looking for contributors for this app. Just a stock market dashboard that I'd like to enhance for fun. More documentation about how I created the app found here:
 https://medium.com/@gsuppy/my-first-full-stack-app-wolfstreet-f89a41722d25#.ne7uy8nd3
 
-## Heading ##
-  Wolf Street Takes on Daily Market Education
-
-## Sub-Heading ##
+## Vision of the App ##
+  Wolf Street Takes on Daily Market Education!
   Transform from a sheep to a wolf as you take on the markets of Wall Street.
 
 ## Summary ##
